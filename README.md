@@ -45,7 +45,7 @@ PickN'Drop is a full-stack multi-tenant SaaS platform for managing physical shel
 ### Platform
 
 - Multi-role auth: Admin · Business · Client
-- Subscription tiers: · Basic · Pro · Enterprise
+- Subscription tiers: Basic · Pro · Enterprise
 - Auto-suspension of shelf visibility on lapsed subscription
 - Fully responsive (mobile-first)
 
