@@ -15,7 +15,7 @@ class ProductController extends Controller
     public function index()
     {
         //
-        return Inertia::render("product/index");
+        return Inertia::render("products/index");
     }
 
     /**
