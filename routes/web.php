@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::resource('/', LandingController::class)->names('landing');
-Route::resource('/product', ProductController::class)->names('product');
+Route::resource('/products', ProductController::class)->names('products');
 
 // Route::get('/', function () {
 //     return Inertia::render('landing');
