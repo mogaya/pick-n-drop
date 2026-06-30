@@ -103,13 +103,13 @@ export function AppFooter() {
     );
 }
 
-export default function Layout({ children }: PropsWithChildren) {
+export default function Layout({ children, showCart = false }: PropsWithChildren<{ showCart?: boolean }>) {
     return (
         <CartProvider>
             <Head title="PickNDrop" />
 
             <div className="flex min-h-screen flex-col">
-                <AppNav />
+                <AppNav showCart={showCart} />
                 <main className="flex-1">{children}</main>
                 <AppFooter />
             </div>
