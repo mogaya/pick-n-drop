@@ -4,7 +4,7 @@ import { NavUser } from '@/components/nav-user';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
-import { Boxes, ChartColumn, LayoutGrid, Package, ShoppingCart, Truck } from 'lucide-react';
+import { Boxes, ChartColumn, CreditCard, LayoutGrid, Package, ShoppingCart, Truck } from 'lucide-react';
 import AppLogo from './app-logo';
 
 const mainNavItems: NavItem[] = [
@@ -41,6 +41,12 @@ const mainNavItems: NavItem[] = [
         title: 'Sales history',
         url: '/business/history',
         icon: ChartColumn,
+    },
+
+    {
+        title: 'Subscription',
+        url: '/business/subscription',
+        icon: CreditCard,
     },
 ];
 
