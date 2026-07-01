@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BusinessDashboardController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -15,7 +16,8 @@ Route::resource('/products', ProductController::class)->names('products');
 Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', function () {
         return Inertia::render('dashboard');
-    })->name('dashboard');
+    })->name('dashboard');    
+    Route::resource('/business/dashboard', BusinessDashboardController::class)->names('businessDashboard');
 });
 
 require __DIR__.'/settings.php';
