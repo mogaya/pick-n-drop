@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BusinessDashboardController;
+use App\Http\Controllers\BusinessOrderController;
 use App\Http\Controllers\BusinessProductController;
 use App\Http\Controllers\BusinessStockController;
 use App\Http\Controllers\LandingController;
@@ -22,6 +23,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/business/dashboard', BusinessDashboardController::class)->names('businessDashboard');
     Route::resource('/business/products', BusinessProductController::class)->names('businessProducts');
     Route::resource('/business/stock', BusinessStockController::class)->names('businessStock');
+    Route::resource('/business/orders', BusinessOrderController::class)->names('businessOrders');
 });
 
 require __DIR__.'/settings.php';
