@@ -4,7 +4,7 @@ import { NavUser } from '@/components/nav-user';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
-import { Boxes, ChartColumn, CreditCard, LayoutGrid, Package, ShoppingCart, Truck } from 'lucide-react';
+import { Boxes, ChartColumn, CreditCard, FileText, LayoutGrid, Package, ShoppingCart, Truck } from 'lucide-react';
 import AppLogo from './app-logo';
 
 const mainNavItems: NavItem[] = [
@@ -47,6 +47,12 @@ const mainNavItems: NavItem[] = [
         title: 'Subscription',
         url: '/business/subscription',
         icon: CreditCard,
+    },
+
+    {
+        title: 'Invoices',
+        url: '/business/invoices',
+        icon: FileText,
     },
 ];
 
