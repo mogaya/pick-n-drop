@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Business;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
-class BusinessProductController extends Controller
+class BusinessDashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class BusinessProductController extends Controller
     public function index()
     {
         //
-        return Inertia::render("business/products/index");
+        return Inertia::render('business/dashboard/index');
     }
 
     /**

@@ -1,14 +1,14 @@
 <?php
 
-use App\Http\Controllers\BusinessDashboardController;
-use App\Http\Controllers\BusinessDeliveryController;
-use App\Http\Controllers\BusinessHistoryController;
-use App\Http\Controllers\BusinessInvoiceController;
-use App\Http\Controllers\BusinessOrderController;
-use App\Http\Controllers\BusinessProductController;
-use App\Http\Controllers\BusinessProfileController;
-use App\Http\Controllers\BusinessStockController;
-use App\Http\Controllers\BusinessSubscriptionController;
+use App\Http\Controllers\Business\BusinessDashboardController;
+use App\Http\Controllers\Business\BusinessDeliveryController;
+use App\Http\Controllers\Business\BusinessHistoryController;
+use App\Http\Controllers\Business\BusinessInvoiceController;
+use App\Http\Controllers\Business\BusinessOrderController;
+use App\Http\Controllers\Business\BusinessProductController;
+use App\Http\Controllers\Business\BusinessProfileController;
+use App\Http\Controllers\Business\BusinessStockController;
+use App\Http\Controllers\Business\BusinessSubscriptionController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
