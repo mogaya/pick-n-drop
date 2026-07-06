@@ -54,6 +54,12 @@ const mainNavItems: NavItem[] = [
         url: '/business/invoices',
         icon: FileText,
     },
+
+    {
+        title: 'Profile settings',
+        url: '/business/profile',
+        icon: FileText,
+    },
 ];
 
 const footerNavItems: NavItem[] = [];

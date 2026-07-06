@@ -6,6 +6,7 @@ use App\Http\Controllers\BusinessHistoryController;
 use App\Http\Controllers\BusinessInvoiceController;
 use App\Http\Controllers\BusinessOrderController;
 use App\Http\Controllers\BusinessProductController;
+use App\Http\Controllers\BusinessProfileController;
 use App\Http\Controllers\BusinessStockController;
 use App\Http\Controllers\BusinessSubscriptionController;
 use App\Http\Controllers\LandingController;
@@ -31,7 +32,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/business/deliveries', BusinessDeliveryController::class)->names('businessDeliveries');
     Route::resource('/business/history', BusinessHistoryController::class)->names('businessHistory');
     Route::resource('/business/subscription', BusinessSubscriptionController::class)->names('businessSubscription');
-    Route::resource('/business/invoices', BusinessInvoiceController::class)->names('businessSubscription');
+    Route::resource('/business/invoices', BusinessInvoiceController::class)->names('businessInvoices');
+    Route::resource('/business/profile', BusinessProfileController::class)->names('businessProfile');
 });
 
 require __DIR__.'/settings.php';
