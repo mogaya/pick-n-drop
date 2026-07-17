@@ -19,7 +19,7 @@ return new class extends Migration
             $table->decimal('price', 10, 2);
             $table->string('category')->nullable();
             $table->unsignedInteger('stock')->default(0);
-            $table->string('shelf_id')->nullable();
+            $table->foreignId('shelf_id')->nullable()->constrained()->nullOnDelete();
             $table->string('image_url')->nullable();
             $table->text('description')->nullable();
             $table->json('metadata')->nullable();

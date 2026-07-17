@@ -10,6 +10,7 @@ test('product exposes the expected relationships', function () {
     $product = new Product;
 
     expect($product->business())->toBeInstanceOf(BelongsTo::class)
+        ->and($product->shelf())->toBeInstanceOf(BelongsTo::class)
         ->and($product->inventoryMovements())->toBeInstanceOf(HasMany::class)
         ->and($product->orderItems())->toBeInstanceOf(HasMany::class)
         ->and($product->cartItems())->toBeInstanceOf(HasMany::class);
@@ -23,7 +24,7 @@ test('product exposes the expected attributes through the model', function () {
         'price' => '1299',
         'category' => 'beauty',
         'stock' => 12,
-        'shelfId' => 'A-104',
+        'shelfId' => 7,
         'imageUrl' => 'https://example.com/glow-serum.jpg',
         'description' => 'A lightweight daily serum.',
         'metadata' => ['size' => '30ml'],
@@ -35,7 +36,7 @@ test('product exposes the expected attributes through the model', function () {
         ->and($product->price)->toBe('1299')
         ->and($product->category)->toBe('beauty')
         ->and($product->stock)->toBe(12)
-        ->and($product->shelfId)->toBe('A-104')
+        ->and($product->shelfId)->toBe(7)
         ->and($product->imageUrl)->toBe('https://example.com/glow-serum.jpg')
         ->and($product->description)->toBe('A lightweight daily serum.')
         ->and($product->metadata)->toBe(['size' => '30ml']);

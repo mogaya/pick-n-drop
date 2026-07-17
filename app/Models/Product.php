@@ -58,12 +58,12 @@ class Product extends Model
         $this->attributes['business_id'] = $value;
     }
 
-    public function getShelfIdAttribute(): ?string
+    public function getShelfIdAttribute(): ?int
     {
-        return $this->attributes['shelf_id'] ?? null;
+        return isset($this->attributes['shelf_id']) ? (int) $this->attributes['shelf_id'] : null;
     }
 
-    public function setShelfIdAttribute(?string $value): void
+    public function setShelfIdAttribute(?int $value): void
     {
         $this->attributes['shelf_id'] = $value;
     }
@@ -81,6 +81,11 @@ class Product extends Model
     public function business(): BelongsTo
     {
         return $this->belongsTo(Business::class, 'business_id');
+    }
+
+    public function shelf(): BelongsTo
+    {
+        return $this->belongsTo(Shelf::class);
     }
 
     public function inventoryMovements(): HasMany

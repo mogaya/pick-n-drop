@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Business;
 use App\Models\Product;
+use App\Models\Shelf;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -25,7 +26,7 @@ class ProductFactory extends Factory
             'price' => fake()->randomFloat(2, 100, 10000),
             'category' => fake()->randomElement(['beauty', 'fashion', 'food', 'electronics']),
             'stock' => fake()->numberBetween(0, 100),
-            'shelf_id' => fake()->regexify('[A-Z]-[0-9]{3}'),
+            'shelf_id' => Shelf::factory(),
             'image_url' => fake()->imageUrl(),
             'description' => fake()->sentence(),
             'metadata' => [
