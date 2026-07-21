@@ -19,11 +19,15 @@ class OrderItemFactory extends Factory
      */
     public function definition(): array
     {
+        $qty = fake()->numberBetween(1, 5);
+        $unitPrice = fake()->randomFloat(2, 100, 5000);
+
         return [
             'order_id' => Order::factory(),
             'product_id' => Product::factory(),
-            'qty' => fake()->numberBetween(1, 5),
-            'unit_price' => fake()->randomFloat(2, 100, 5000),
+            'qty' => $qty,
+            'unit_price' => $unitPrice,
+            'line_total' => round($qty * $unitPrice, 2),
         ];
     }
 }

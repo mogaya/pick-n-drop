@@ -25,6 +25,8 @@ class OrderItem extends Model
         'qty',
         'unit_price',
         'unitPrice',
+        'line_total',
+        'lineTotal',
     ];
 
     /**
@@ -37,6 +39,7 @@ class OrderItem extends Model
         return [
             'qty' => 'integer',
             'unit_price' => 'decimal:2',
+            'line_total' => 'decimal:2',
         ];
     }
 
@@ -68,6 +71,16 @@ class OrderItem extends Model
     public function setUnitPriceAttribute(string|float|int $value): void
     {
         $this->attributes['unit_price'] = $value;
+    }
+
+    public function getLineTotalAttribute(): ?string
+    {
+        return $this->attributes['line_total'] ?? null;
+    }
+
+    public function setLineTotalAttribute(string|float|int $value): void
+    {
+        $this->attributes['line_total'] = $value;
     }
 
     public function order(): BelongsTo
