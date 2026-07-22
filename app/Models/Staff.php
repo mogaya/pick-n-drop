@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\StaffRole;
 use Database\Factories\StaffFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -22,23 +21,20 @@ class Staff extends Model
         'name',
         'email',
         'phone',
-        'role',
+        'role_id',
+        'roleId',
         'business_id',
         'businessId',
-        'permissions',
     ];
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
+    public function getRoleIdAttribute(): ?int
     {
-        return [
-            'role' => StaffRole::class,
-            'permissions' => 'array',
-        ];
+        return isset($this->attributes['role_id']) ? (int) $this->attributes['role_id'] : null;
+    }
+
+    public function setRoleIdAttribute(?int $value): void
+    {
+        $this->attributes['role_id'] = $value;
     }
 
     public function getBusinessIdAttribute(): ?int
@@ -54,5 +50,10 @@ class Staff extends Model
     public function business(): BelongsTo
     {
         return $this->belongsTo(Business::class, 'business_id');
+    }
+
+    public function role(): BelongsTo
+    {
+        return $this->belongsTo(Role::class);
     }
 }

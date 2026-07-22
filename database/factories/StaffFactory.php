@@ -3,8 +3,8 @@
 namespace Database\Factories;
 
 use App\Models\Business;
+use App\Models\Role;
 use App\Models\Staff;
-use App\StaffRole;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,44 +19,26 @@ class StaffFactory extends Factory
      */
     public function definition(): array
     {
-        $role = fake()->randomElement(StaffRole::cases());
-
         return [
             'business_id' => Business::factory(),
+            'role_id' => Role::factory(),
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'phone' => fake()->phoneNumber(),
-            'role' => $role,
-            'permissions' => self::defaultPermissionsFor($role),
         ];
     }
 
     public function manager(): static
     {
         return $this->state(fn (array $attributes) => [
-            'role' => StaffRole::Manager,
-            'permissions' => ['orders', 'deliveries', 'inventory', 'staff'],
+            'role_id' => Role::factory()->manager(),
         ]);
     }
 
     public function driver(): static
     {
         return $this->state(fn (array $attributes) => [
-            'role' => StaffRole::Driver,
-            'permissions' => ['deliveries'],
+            'role_id' => Role::factory()->driver(),
         ]);
-    }
-
-    /**
-     * @return list<string>
-     */
-    private static function defaultPermissionsFor(StaffRole $role): array
-    {
-        return match ($role) {
-            StaffRole::Manager => ['orders', 'deliveries', 'inventory', 'staff'],
-            StaffRole::Picker => ['orders', 'inventory'],
-            StaffRole::Packer => ['orders'],
-            StaffRole::Driver => ['deliveries'],
-        };
     }
 }
