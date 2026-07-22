@@ -1,7 +1,5 @@
 <?php
 
-uses(Tests\TestCase::class);
-
 use App\InvoiceStatus;
 use App\Models\Invoice;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
