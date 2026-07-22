@@ -67,6 +67,16 @@ class Business extends Model
         return $this->hasMany(Product::class);
     }
 
+    public function inventoryMovements(): HasMany
+    {
+        return $this->hasMany(InventoryMovement::class);
+    }
+
+    public function occupiedShelves(): HasMany
+    {
+        return $this->hasMany(Shelf::class, 'occupied_by_business_id');
+    }
+
     public function staff(): HasMany
     {
         return $this->hasMany(Staff::class);
@@ -80,5 +90,20 @@ class Business extends Model
     public function orders(): HasMany
     {
         return $this->hasMany(Order::class);
+    }
+
+    public function subscriptions(): HasMany
+    {
+        return $this->hasMany(Subscription::class);
+    }
+
+    public function alerts(): HasMany
+    {
+        return $this->hasMany(Alert::class, 'target_business_id');
+    }
+
+    public function revenueEntries(): HasMany
+    {
+        return $this->hasMany(RevenueEntry::class);
     }
 }
