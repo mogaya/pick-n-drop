@@ -10,8 +10,9 @@ enum Category: string
     case Skincare = 'skincare';
     case Haircare = 'haircare';
     case Fashion = 'fashion';
+    case Food = 'food';
+    case Electronics = 'electronics';
     case Home = 'home';
-    case Tech = 'tech';
 
     /**
      * Products in this category.

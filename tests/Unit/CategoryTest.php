@@ -9,8 +9,9 @@ test('category enum matches the storefront mock data values', function () {
         'skincare',
         'haircare',
         'fashion',
+        'food',
+        'electronics',
         'home',
-        'tech',
     ]);
 });
 
