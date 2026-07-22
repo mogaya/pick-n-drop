@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Category;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Product extends Model
 {
@@ -43,6 +45,7 @@ class Product extends Model
         return [
             'price' => 'decimal:0',
             'stock' => 'integer',
+            'category' => Category::class,
             'metadata' => 'array',
         ];
     }
@@ -100,5 +103,10 @@ class Product extends Model
     public function cartItems(): HasMany
     {
         return $this->hasMany(CartItem::class);
+    }
+
+    public function media(): MorphMany
+    {
+        return $this->morphMany(Media::class, 'owner');
     }
 }

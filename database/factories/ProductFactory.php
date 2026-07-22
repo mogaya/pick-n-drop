@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Category;
 use App\Models\Business;
 use App\Models\Product;
 use App\Models\Shelf;
@@ -24,7 +25,7 @@ class ProductFactory extends Factory
             'sku' => fake()->unique()->bothify('SKU-####'),
             'name' => fake()->words(3, true),
             'price' => fake()->randomFloat(2, 100, 10000),
-            'category' => fake()->randomElement(['beauty', 'fashion', 'food', 'electronics']),
+            'category' => fake()->randomElement(Category::cases()),
             'stock' => fake()->numberBetween(0, 100),
             'shelf_id' => Shelf::factory(),
             'image_url' => fake()->imageUrl(),
