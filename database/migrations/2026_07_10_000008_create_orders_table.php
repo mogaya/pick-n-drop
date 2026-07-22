@@ -21,9 +21,6 @@ return new class extends Migration
             $table->string('fulfillment');
             $table->timestamp('placed_at');
             $table->timestamp('fulfilled_at')->nullable();
-            $table->foreignId('delivery_id')->nullable()->constrained()->nullOnDelete();
-            $table->foreignId('invoice_id')->nullable()->constrained()->nullOnDelete();
-            $table->foreignId('payment_id')->nullable()->constrained()->nullOnDelete();
             $table->timestamps();
         });
     }

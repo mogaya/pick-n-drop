@@ -1,7 +1,5 @@
 <?php
 
-uses(Tests\TestCase::class);
-
 use App\Models\Order;
 use App\OrderFulfillment;
 use App\OrderStatus;
@@ -15,9 +13,10 @@ test('order exposes the expected relationships', function () {
     expect($order->orderItems())->toBeInstanceOf(HasMany::class)
         ->and($order->business())->toBeInstanceOf(BelongsTo::class)
         ->and($order->client())->toBeInstanceOf(BelongsTo::class)
-        ->and($order->invoice())->toBeInstanceOf(HasOne::class)
+        ->and($order->invoices())->toBeInstanceOf(HasMany::class)
         ->and($order->delivery())->toBeInstanceOf(HasOne::class)
-        ->and($order->payment())->toBeInstanceOf(HasOne::class);
+        ->and($order->addresses())->toBeInstanceOf(HasMany::class)
+        ->and($order->payments())->toBeInstanceOf(HasMany::class);
 });
 
 test('order exposes the expected attributes through the model', function () {
@@ -30,9 +29,6 @@ test('order exposes the expected attributes through the model', function () {
         'fulfillment' => OrderFulfillment::Delivery,
         'placedAt' => '2026-07-17 10:00:00',
         'fulfilledAt' => null,
-        'deliveryId' => 11,
-        'invoiceId' => 8,
-        'paymentId' => 3,
     ]);
 
     expect($order->clientId)->toBe(5)
@@ -42,10 +38,7 @@ test('order exposes the expected attributes through the model', function () {
         ->and($order->status)->toBe(OrderStatus::Packed)
         ->and($order->fulfillment)->toBe(OrderFulfillment::Delivery)
         ->and($order->placedAt->format('Y-m-d H:i:s'))->toBe('2026-07-17 10:00:00')
-        ->and($order->fulfilledAt)->toBeNull()
-        ->and($order->deliveryId)->toBe(11)
-        ->and($order->invoiceId)->toBe(8)
-        ->and($order->paymentId)->toBe(3);
+        ->and($order->fulfilledAt)->toBeNull();
 });
 
 test('order supports guest clients without a registered user', function () {

@@ -37,12 +37,6 @@ class Order extends Model
         'placedAt',
         'fulfilled_at',
         'fulfilledAt',
-        'delivery_id',
-        'deliveryId',
-        'invoice_id',
-        'invoiceId',
-        'payment_id',
-        'paymentId',
     ];
 
     /**
@@ -123,36 +117,6 @@ class Order extends Model
         $this->attributes['fulfilled_at'] = $value === null ? null : ($value instanceof \DateTimeInterface ? $value->format('Y-m-d H:i:s') : $value);
     }
 
-    public function getDeliveryIdAttribute(): ?int
-    {
-        return isset($this->attributes['delivery_id']) ? (int) $this->attributes['delivery_id'] : null;
-    }
-
-    public function setDeliveryIdAttribute(?int $value): void
-    {
-        $this->attributes['delivery_id'] = $value;
-    }
-
-    public function getInvoiceIdAttribute(): ?int
-    {
-        return isset($this->attributes['invoice_id']) ? (int) $this->attributes['invoice_id'] : null;
-    }
-
-    public function setInvoiceIdAttribute(?int $value): void
-    {
-        $this->attributes['invoice_id'] = $value;
-    }
-
-    public function getPaymentIdAttribute(): ?int
-    {
-        return isset($this->attributes['payment_id']) ? (int) $this->attributes['payment_id'] : null;
-    }
-
-    public function setPaymentIdAttribute(?int $value): void
-    {
-        $this->attributes['payment_id'] = $value;
-    }
-
     public function orderItems(): HasMany
     {
         return $this->hasMany(OrderItem::class);
@@ -168,18 +132,23 @@ class Order extends Model
         return $this->belongsTo(User::class, 'client_id');
     }
 
-    public function invoice(): HasOne
+    public function invoices(): HasMany
     {
-        return $this->hasOne(Invoice::class, 'id', 'invoice_id');
+        return $this->hasMany(Invoice::class);
     }
 
     public function delivery(): HasOne
     {
-        return $this->hasOne(Delivery::class, 'id', 'delivery_id');
+        return $this->hasOne(Delivery::class);
     }
 
-    public function payment(): HasOne
+    public function addresses(): HasMany
     {
-        return $this->hasOne(Payment::class, 'id', 'payment_id');
+        return $this->hasMany(Address::class);
+    }
+
+    public function payments(): HasMany
+    {
+        return $this->hasMany(Payment::class);
     }
 }

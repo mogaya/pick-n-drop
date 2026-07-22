@@ -1,7 +1,5 @@
 <?php
 
-uses(Tests\TestCase::class);
-
 use App\Models\OrderItem;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
